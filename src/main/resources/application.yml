@@ -1,4 +1,7 @@
 spring:
+  devtools:
+    restart:
+      exclude: templates/**,static/**
   datasource:
     #   数据源基本配置
     username: root
@@ -42,3 +45,7 @@ security:
   basic:
     enabled: false
 #      - classpath:sql/department.sql
+server:
+  error:
+    whitelabel:
+      enabled: false
