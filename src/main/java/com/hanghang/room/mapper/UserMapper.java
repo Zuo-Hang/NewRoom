@@ -22,5 +22,20 @@ public interface UserMapper {
             @Result(column="last_update_time",property="lastUpdateTime"),
             @Result(column="avatar",property="avatar")
     })
-    public User gitUserById (Long id);
+    User getUserById (Long id);
+
+    @Select("SELECT * FROM user WHERE name=#{name}")
+    @Results({
+            @Result(id=true,column="id",property="id"),
+            @Result(column="name",property="name"),
+            @Result(column="email",property="email"),
+            @Result(column="phone_number",property="phoneNumber"),
+            @Result(column="password",property="password"),
+            @Result(column="status",property="status"),
+            @Result(column="create_time",property="createTime"),
+            @Result(column="last_login_time",property="lastLoginTime"),
+            @Result(column="last_update_time",property="lastUpdateTime"),
+            @Result(column="avatar",property="avatar")
+    })
+    User getUserByName(String name);
 }
