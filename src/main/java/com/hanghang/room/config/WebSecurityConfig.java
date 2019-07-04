@@ -1,6 +1,7 @@
 package com.hanghang.room.config;
 
 import com.hanghang.room.security.AuthProvider;
+import com.hanghang.room.security.LoginAuthFailHandler;
 import com.hanghang.room.security.LoginUrlEntryPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -33,6 +34,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()//以and结尾
                 .formLogin()
                 .loginProcessingUrl("/login") // 配置角色登录处理入口
+                .failureHandler(authFailHandler())
                 .and()
                 .logout()
                 .logoutUrl("/logout")
@@ -66,4 +68,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public LoginUrlEntryPoint urlEntryPoint() {
         return new LoginUrlEntryPoint("/user/login");//默认到普通用户登陆界面
     }
+    @Bean
+    public LoginAuthFailHandler authFailHandler() {
+        return new LoginAuthFailHandler(urlEntryPoint());
+    }
+
 }

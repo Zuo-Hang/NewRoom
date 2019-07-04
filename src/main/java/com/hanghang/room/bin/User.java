@@ -31,7 +31,7 @@ public class User implements UserDetails {
     private Date lastUpdateTime;
 
     private String avatar;
-    //权限
+    //权限信息列表
     private List<GrantedAuthority> authorityList;
 
     public List<GrantedAuthority> getAuthorityList() {
@@ -60,7 +60,7 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return this.authorityList;
     }
 
     public String getPassword() {

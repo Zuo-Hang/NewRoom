@@ -33,6 +33,13 @@ spring:
     #指定模板返回的前缀，后缀
     suffix: .html
     prefix: classpath:/templates/
+  #multipart config
+  http:
+    multipart:
+      enabled: true
+      location: E:\room\tmp
+      file-size-threshold: 5MB
+      max-request-size: 20MB
 mybatis:
   # 指定全局配置文件位置
   config-location: classpath:mybatis/mybatis-config.xml

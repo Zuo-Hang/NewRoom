@@ -17,5 +17,4 @@ public interface RoleMapper {
             @Result(column="name",property="name")
     })
     List<Role> findRolesByUserId(Long userId);
-
 }

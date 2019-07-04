@@ -1,5 +1,4 @@
 package com.hanghang.room.service.user;
-
 import com.hanghang.room.bin.Role;
 import com.hanghang.room.bin.User;
 import com.hanghang.room.mapper.RoleMapper;
@@ -30,7 +29,6 @@ public class UserServiceImpl implements IUserService {
     @Override
     public User getUserByName(String name) {
         User user = userMapper.getUserByName(name);
-        //System.out.println(user);
         if (user == null) {
             return null;
         }
@@ -42,6 +40,7 @@ public class UserServiceImpl implements IUserService {
         }
 
         List<GrantedAuthority> authorities = new ArrayList<>();
+        //java8 的流式方法
         roles.forEach(role -> authorities.add(new SimpleGrantedAuthority("ROLE_" + role.getName())));
         user.setAuthorityList(authorities);
         return user;
