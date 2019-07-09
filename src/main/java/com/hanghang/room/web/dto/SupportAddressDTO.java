@@ -1,20 +1,22 @@
-package com.hanghang.room.bin;
+package com.hanghang.room.web.dto;
 
-/**
- * Created by hanghang
- */
-public class SupportAddress {
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+public class SupportAddressDTO {
     private Long id;
-
-    // 上一级行政单位
+    @JsonProperty(value = "belong_to")
     private String belongTo;
-    //城市缩写
+
+    @JsonProperty(value = "en_name")
     private String enName;
-    //城市中文名
+
+    @JsonProperty(value = "cn_name")
     private String cnName;
-    //行政级别
+
     private String level;
+
     private double baiduMapLongitude;
+
     private double baiduMapLatitude;
 
     public Long getId() {
@@ -71,46 +73,5 @@ public class SupportAddress {
 
     public void setBaiduMapLatitude(double baiduMapLatitude) {
         this.baiduMapLatitude = baiduMapLatitude;
-    }
-
-    @Override
-    public String toString() {
-        return "SupportAddress{" +
-                "id=" + id +
-                ", belongTo='" + belongTo + '\'' +
-                ", enName='" + enName + '\'' +
-                ", cnName='" + cnName + '\'' +
-                ", level='" + level + '\'' +
-                ", baiduMapLongitude=" + baiduMapLongitude +
-                ", baiduMapLatitude=" + baiduMapLatitude +
-                '}';
-    }
-
-    /**
-     * 行政级别定义
-     */
-    public enum Level {
-        CITY("city"),//城市
-        REGION("region");//区
-
-        private String value;
-
-        Level(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        public static Level of(String value) {
-            for (Level level : Level.values()) {
-                if (level.getValue().equals(value)) {
-                    return level;
-                }
-            }
-
-            throw new IllegalArgumentException();
-        }
     }
 }
