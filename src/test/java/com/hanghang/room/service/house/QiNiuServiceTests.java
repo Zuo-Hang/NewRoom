@@ -10,9 +10,6 @@ import com.hanghang.room.ApplicationTests;
 import com.qiniu.common.QiniuException;
 import com.qiniu.http.Response;
 
-/**
- * Created by 瓦力.
- */
 public class QiNiuServiceTests extends ApplicationTests {
     @Autowired
     private IQiNiuService qiNiuService;
